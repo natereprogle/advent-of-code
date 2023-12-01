@@ -20,25 +20,27 @@ Part 2 is quite a bit more involved. The _words_ of the numbers also count as nu
 
 Next, we are going to do a TON of mapping on the array of . The first map (of three) converts each word to the corresponding number. This works by
 
-1. We loop through every single character of the string passed
+1. Looping through every single character of the string passed
 2. If that character can be converted to a number we push the character to the numbers array
-3. Then we loop through every key in that record we create a while ago. Remeber, the key of the record is the number in word form, the value is the number in number form.
+3. If not, we loop through every key in that record we create a while ago.
     1. We first substring the string at the current index of the main loop. So, if i is 12, then we substring the character at position 12.
     2. If the string, after being substringed, starts with the key we're iterating on, we push the corresponding value to the numbers array
 
-<details><summary>How does this first map work?</summary>
+<details><summary>More details about this map here</summary>
 
-This is confusing, so let me list an example using the string of 'one12jfieojfive5':
+This is can be confusing, so let me list an example using the string of 'one12jfieojfive5':
 
-We start at position 0, so we then check if 'o' is a number. It isn't, so ignore it and go to the inside loop
-
-We start at the first key in the `wordsToNum` record, which happens to be 'one'. After substringing the original string at position 0, we check to see if it starts with 'one'. It does! Let's push `wordsToNums[key]` to the numbers array, which is 1.
-
-Next, i = 1. string[1] is 'n', which isn't a number. Substring the array at position 1, which cuts off the 'o', leaving us with 'ne12jfieojfive5'. Looping through every single key in the `wordsToNum` array leave us with nothing, so continue on.
+1. We start at position 0, so we then check if 'o' is a number. It isn't, so ignore it and go to the inside loop
+2. We start at the first key in the `wordsToNum` record, which happens to be 'one'. After substringing the original string at position 0, we check to see if it starts with 'one'. It does! Let's push `wordsToNums[key]` to the numbers array, which is 1.
+3. Next, i = 1. string[1] is 'n', which isn't a number. Substring the array at position 1, which cuts off the 'o', leaving us with 'ne12jfieojfive5'. Looping through every single key in the `wordsToNum` array leave us with nothing, so continue on.
 
 Eventually, we get to i = 3. Is '1' a number? Yes! Push it to the array.
 
-</details></br>
+That's the gist! Continuing on to our next two maps
+
+---
+
+</details>
 
 After the first map is done, we then map again to convert each element to only its first and last character. Finally, we map a third time to convert each of the elements to numbers, and use the `Array.prototype.reduce()` method to add them all together.
 
@@ -53,9 +55,9 @@ const strings = [
     'threefourfivesix'
 ]
 ```
+
 .map on the first line converts to `['11255', '6789', '3456']`
 .map again converts to `['15', '69', '36']`
-
 
 We now map the final numbers array to convert the strings to numbers and then we reduce them by adding each number together
 
