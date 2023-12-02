@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "day": "func() { ts-node ./${1:-2023}/day-${2:-1}/part-${3:-1}.ts; }; func",
+    "day:shell": "func() { ts-node ./${1:-2023}/day-${2:-1}/part-${3:-1}.ts; }; func",
+    "day:ps": "powershell -ExecutionPolicy RemoteSigned -Command \"& {param($year='2023', $day='1', $part='1'); ts-node ./$year/day-$day/part-$part.ts}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
