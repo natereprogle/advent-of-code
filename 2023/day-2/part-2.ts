@@ -5,7 +5,6 @@ if (input == undefined) process.exit(1)
 
 const gamePowers = []
 
-// We can only have 12 red, 13 green, or 14 blue per round
 for (const game of input) {
     let rounds = game.split(': ')[1].split('; ')
 
