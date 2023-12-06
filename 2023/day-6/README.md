@@ -1,3 +1,5 @@
+Apparently you can solve this using the quadratic equation, didn't even know that. Oh well lol
+
 # Day 6 Part 1
 
 Finally, difficulty level went down a bit haha. This one only took me about 30 mins after wrapping my head around the problem's ask
