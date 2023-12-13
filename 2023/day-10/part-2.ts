@@ -1,0 +1,1 @@
+// I used this instead https://github.com/hyper-neutrino/advent-of-code/blob/main/2023/day10p2.py
