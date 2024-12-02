@@ -35,3 +35,35 @@ that `SolveAsync` method via Reflection.
 
 Is it stupidly complicated? Yes. Does it allow me to literally just add a class with that attribute and boom, it works?
 Also yes. Doing it this way made it extremely easy to add new solutions as time goes on. 
+
+Here's a _**very**_ rough Mermaid chart of how this works:
+
+```mermaid
+flowchart TD 
+	subgraph SpectreConsole 
+		subgraph DI [Dependency Injection]
+			SolutionFactory -->|AddSingleton&lt;SolutionResolver&gt;&lpar;&rpar;| IServiceCollection 
+		end
+		IServiceCollection -->|Provided to| TypeRegistrar
+		TypeRegistrar -->|Provided to| D[Spectre.Console] 
+		SpectreConfig[Spectre Configuration] -->|Configures| D
+	end 
+	F[User] -->|Executes| E 
+	subgraph AppDomain 
+		D -->|Starts when user executes it| E[Console App] 
+		E -->|Step 1: Requests Solution| G[SolutionResolver] 
+		G -->|Step 2: Reflects on| Solutions 
+		Solutions -->|Step 3: Returns Type| G 
+		G -->|Step 4: Returns Type| E 
+		E -->|Step 5: Requests SolutionClass| G 
+		G -->|Step 6: Creates SolutionClass<br>using SolutionFactory| SolutionClass 
+		SolutionClass -->|Provides Solution| E 
+		E -->|Step 7: Runs SolveAsync<br>to execute solution| SolutionClass 
+	end 
+	
+	subgraph Solutions [Solution Implementations]
+		Solution1[Day1Solutions]
+		Solution2[Day2Solutions]
+		SolutionN[...DayNSolutions]
+	end
+```
