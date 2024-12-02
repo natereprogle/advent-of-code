@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using AoC2024.Abstractions;
 using AoC2024.Interfaces;
 using AoC2024.Utils;
 using JetBrains.Profiler.Api;
@@ -6,21 +7,9 @@ using JetBrains.Profiler.Api;
 namespace AoC2024.Solutions;
 
 [AdventSolution(1, 1)]
-public class AoCDay1Part1(IAoCLogger logger) : IAdventSolution
+public class AoCDay1Part1(IAoCLogger logger) : AdventSolutionBase(logger)
 {
-    public async Task SolveAsync(string inputPath, bool useProfilerForTimer = false)
-    {
-        var input = await File.ReadAllLinesAsync(inputPath);
-
-        // Profiled in JetBrains Rider with dotTrace. Result: 25ms. Note that dotTrace adds overhead, stopwatch has this closer to 12ms
-        MeasureProfiler.StartCollectingData();
-        var solution = Solve(input);
-        MeasureProfiler.StopCollectingData();
-
-        logger.GetLogger().Information("Day 1 part 1 solution is {solution}", solution);
-    }
-
-    private static int Solve(string[] input)
+    public override int Solve(string[] input)
     {
         var (column1, column2) = input.Select(line => line.Split("   ").Select(int.Parse).ToArray())
             .ToArray()
@@ -39,34 +28,9 @@ public class AoCDay1Part1(IAoCLogger logger) : IAdventSolution
 }
 
 [AdventSolution(1, 2)]
-public class AoCDay1Part2(IAoCLogger logger) : IAdventSolution
+public class AoCDay1Part2(IAoCLogger logger) : AdventSolutionBase(logger)
 {
-    public async Task SolveAsync(string inputPath, bool useProfilerForTimer = false)
-    {
-        var input = await File.ReadAllLinesAsync(inputPath);
-
-        // Profiled in JetBrains Rider with dotTrace. Result: 81ms. Note that dotTrace adds overhead, stopwatch has this closer to 30ms
-        int solution;
-        Stopwatch sw = new();
-        if (useProfilerForTimer)
-        {
-            MeasureProfiler.StartCollectingData();
-            solution = Solve(input);
-            MeasureProfiler.StopCollectingData();
-        }
-        else
-        {
-            sw = Stopwatch.StartNew();
-            solution = Solve(input);
-            sw.Stop();
-        }
-
-        logger.GetLogger().Information("Day 1 part 2 solution is {solution}", solution);
-        if (!useProfilerForTimer)
-            logger.GetLogger().Information("Day 1 part 2 took {ElapsedMilliseconds}ms", sw.ElapsedMilliseconds);
-    }
-
-    private static int Solve(string[] input)
+    public override int Solve(string[] input)
     {
         var (column1, column2) = input.Select(line => line.Split("   ").Select(int.Parse).ToArray())
             .ToArray()

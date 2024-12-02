@@ -2,5 +2,5 @@
 
 public interface IAdventSolution
 {
-    public Task SolveAsync(string inputPath, bool useProfilerForTimer = false);
+    public Task SolveAsync(string inputPath, int day, int part, bool useProfilerForTimer = false);
 }

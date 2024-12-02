@@ -38,7 +38,7 @@ public class RunCommand(IAoCLogger logger, SolutionFactory factory) : AsyncComma
         try
         {
             var solution = SolutionResolver.FindAdventSolution(settings.Day, settings.Part);
-            await SolutionResolver.RunSolutionAsync(solution, settings.Input, factory, settings.Profiler);
+            await SolutionResolver.RunSolutionAsync(solution, factory, settings.Input, settings.Day, settings.Part, settings.Profiler);
         }
         catch (NotImplementedException e)
         {

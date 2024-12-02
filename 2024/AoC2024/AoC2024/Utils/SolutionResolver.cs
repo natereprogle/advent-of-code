@@ -16,7 +16,7 @@ public static class SolutionResolver
         return solutionType;
     }
 
-    public static async Task RunSolutionAsync(Type? solutionType, string inputPath, SolutionFactory factory,
+    public static async Task RunSolutionAsync(Type? solutionType, SolutionFactory factory, string inputPath, int day, int part,
         bool useProfilerForTimer = false)
     {
         if (solutionType == null)
@@ -24,11 +24,8 @@ public static class SolutionResolver
                 "Could not find class with AdventSolutionAttribute with given day and/or part");
 
         var instance = factory.CreateSolutionInstance(solutionType);
-        var solveMethod = solutionType.GetMethod("SolveAsync");
-
-        if (solveMethod == null) throw new TargetException("Could not find SolveAsync method in solution class");
-
-        if (solveMethod.Invoke(instance, [inputPath, useProfilerForTimer]) is Task task)
+        var solveMethod = solutionType.GetMethod("SolveAsync") ?? throw new TargetException("Could not find SolveAsync method in solution class");
+        if (solveMethod.Invoke(instance, [inputPath, day, part, useProfilerForTimer]) is Task task)
         {
             await task;
         }
