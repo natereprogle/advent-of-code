@@ -9,6 +9,7 @@ namespace AoC2024.Solutions;
 [AdventSolution(1, 1)]
 public class AoCDay1Part1(IAoCLogger logger) : AdventSolutionBase(logger)
 {
+    // Profiled in JetBrains Rider with dotTrace. Result: 25ms. Note that dotTrace adds overhead, stopwatch has this closer to 12ms
     public override int Solve(string[] input)
     {
         var (column1, column2) = input.Select(line => line.Split("   ").Select(int.Parse).ToArray())
@@ -30,6 +31,7 @@ public class AoCDay1Part1(IAoCLogger logger) : AdventSolutionBase(logger)
 [AdventSolution(1, 2)]
 public class AoCDay1Part2(IAoCLogger logger) : AdventSolutionBase(logger)
 {
+    // Profiled in JetBrains Rider with dotTrace. Result: 81ms. Note that dotTrace adds overhead, stopwatch has this closer to 30ms
     public override int Solve(string[] input)
     {
         var (column1, column2) = input.Select(line => line.Split("   ").Select(int.Parse).ToArray())

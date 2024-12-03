@@ -12,7 +12,7 @@ namespace AoC2024.Abstractions;
 
 public abstract class AdventSolutionBase(IAoCLogger logger) : IAdventSolution
 {
-    public async Task SolveAsync(string inputPath, int day, int part, bool useProfilerForTimer = false)
+    public virtual async Task SolveAsync(string inputPath, int day, int part, bool useProfilerForTimer = false)
     {
         var input = await File.ReadAllLinesAsync(inputPath);
 
