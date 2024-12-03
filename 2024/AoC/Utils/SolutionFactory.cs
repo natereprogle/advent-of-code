@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace AoC2024.Utils;
+namespace AoC.Utils;
 
 public class SolutionFactory(IServiceProvider serviceProvider)
 {

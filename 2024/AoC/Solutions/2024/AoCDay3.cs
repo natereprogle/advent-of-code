@@ -1,14 +1,13 @@
-﻿using AoC2024.Abstractions;
-using AoC2024.Interfaces;
-using AoC2024.Logging;
-using AoC2024.Utils;
+using AoC.Abstractions;
+using AoC.Interfaces;
+using AoC.Utils;
 using System.Text.RegularExpressions;
 
-namespace AoC2024.Solutions;
+namespace AoC.Solutions;
 
 // This one was a doozy, so I added more comments than normal to explain it
 
-[AdventSolution(3, 1)]
+[AdventSolution(2024, 3, 1)]
 public partial class AoCDay3Part1(IAoCLogger logger) : AdventSolutionBase(logger)
 {
     private readonly IAoCLogger logger = logger;
@@ -20,19 +19,15 @@ public partial class AoCDay3Part1(IAoCLogger logger) : AdventSolutionBase(logger
         Regex regex = Part1Regex();
         var matches = regex.Matches(str);
 
-        var finalResult = 0;
-
         if (matches == null)
         {
             logger.GetLogger().Warning("No matches found in the input string");
             return 0;
         }
 
-        // A simple loop over all regex matches to multiply their values and add them to the final result. Nothing special, nothing difficult
-        foreach (Match match in matches)
-        {
-            finalResult += int.Parse(match.Groups[1].Value) * int.Parse(match.Groups[2].Value);
-        }
+        var finalResult = matches
+            .Select(match => int.Parse(match.Groups[1].Value) * int.Parse(match.Groups[2].Value))
+            .Sum();
 
         return finalResult;
     }
@@ -41,7 +36,7 @@ public partial class AoCDay3Part1(IAoCLogger logger) : AdventSolutionBase(logger
     private static partial Regex Part1Regex();
 }
 
-[AdventSolution(3, 2)]
+[AdventSolution(2024, 3, 2)]
 public partial class AoCDay3Part2(IAoCLogger logger) : AdventSolutionBase(logger)
 {
     private readonly IAoCLogger logger = logger;

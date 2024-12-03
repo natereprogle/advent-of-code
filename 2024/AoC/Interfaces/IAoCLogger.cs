@@ -1,6 +1,6 @@
 ﻿using Serilog.Core;
 
-namespace AoC2024.Interfaces;
+namespace AoC.Interfaces;
 
 public interface IAoCLogger
 {

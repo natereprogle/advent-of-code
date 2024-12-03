@@ -1,8 +1,8 @@
-﻿using AoC2024.Interfaces;
+﻿using AoC.Interfaces;
 using Serilog;
 using Serilog.Core;
 
-namespace AoC2024.Logging;
+namespace AoC.Logging;
 
 public class AoCLogger : IAoCLogger
 {

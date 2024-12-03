@@ -1,6 +1,6 @@
 ﻿using Spectre.Console.Cli;
 
-namespace AoC2024.Utils;
+namespace AoC.Utils;
 
 public class TypeResolver(IServiceProvider provider) : ITypeResolver, IDisposable
 {

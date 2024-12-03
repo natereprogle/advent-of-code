@@ -1,14 +1,11 @@
-﻿using AoC2024.Abstractions;
-using AoC2024.Interfaces;
-using AoC2024.Utils;
-using JetBrains.Profiler.Api;
+﻿using AoC.Abstractions;
+using AoC.Interfaces;
+using AoC.Utils;
 using System.Data;
-using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
 
-namespace AoC2024.Solutions;
+namespace AoC.Solutions;
 
-[AdventSolution(2, 1)]
+[AdventSolution(2024, 2, 1)]
 public class AoCDay2Part1(IAoCLogger logger) : AdventSolutionBase(logger)
 {
 
@@ -50,7 +47,7 @@ public class AoCDay2Part1(IAoCLogger logger) : AdventSolutionBase(logger)
     }
 }
 
-[AdventSolution(2, 2)]
+[AdventSolution(2024, 2, 2)]
 public class AoCDay2Part2(IAoCLogger logger) : AdventSolutionBase(logger)
 {
     // Profiled in JetBrains Rider with dotTrace. Result: ##ms. Note that dotTrace adds overhead, stopwatch has this closer to 6ms

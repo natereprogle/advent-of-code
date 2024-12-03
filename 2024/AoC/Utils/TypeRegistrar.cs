@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 
-namespace AoC2024.Utils;
+namespace AoC.Utils;
 
 public class TypeRegistrar(IServiceCollection builder) : ITypeRegistrar
 {

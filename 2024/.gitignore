@@ -1,0 +1,8 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+# For Visual Studio. Rider is not an issue
+launchSettings.json
